@@ -30,6 +30,7 @@ After downloading the ZIP file
 4.   Upload the downloaded ZIP file.  
 5.   Once it is complete, activate the plugin.  
 
+Once the plugin is activated, Zoom Widget will be available in Widgets under the menu item Appearance
+
 == Screenshots ==
 1.  Zoom Widget
-2.  Zoom Widget
