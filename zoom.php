@@ -15,7 +15,7 @@ Author License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 	// Constructor //
 
 		function zoom_widget() {
-			$widget_ops = array( 'classname' => 'zoom_widget', 'description' => 'Zoom Text' ); // Widget Settings
+			$widget_ops = array( 'classname' => 'zoom_widget', 'description' => 'Enables site users to resize the predefined areas of the web site.' ); // Widget Settings
 			$control_ops = array( 'id_base' => 'zoom_widget' ); // Widget Control Settings
 			$this->WP_Widget( 'zoom_widget', 'Zoom', $widget_ops, $control_ops ); // Create the widget
 		}
