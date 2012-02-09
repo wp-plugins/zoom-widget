@@ -15,7 +15,7 @@ Zoom Widget is a small smart solution for improving your web site attractiveness
 
 [Demo](http://demo.web-dorado.com/zoom.html)  
 [Support Forum](http://web-dorado.com/forum/zoom.html)  
-[FAQ]http://web-dorado.com/forum/zoom.html)  
+[FAQ](http://web-dorado.com/forum/zoom.html)  
 
 
 [Zoom Widget](http://web-dorado.com/products/zoom-widget-wordpress.html)  is a small smart solution for improving your web site attractiveness. Zoom Widget enables site users to resize the predefined areas of the web site.
