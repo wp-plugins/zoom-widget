@@ -33,3 +33,4 @@ After downloading the ZIP file
 Once the plugin is activated, Zoom Widget will be available in Widgets under the menu item Appearance
 
 == Screenshots ==
+1.  Zoom Widget
