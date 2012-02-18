@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: webdorado
 Donate link: http://web-dorado.com/products/zoom-widget-wordpress.html
-Tags:  Zoom, resize, font size, accessibility, widget, font, content,
+Tags:  Zoom, resize, font size, accessibility, widget, font, content
 Requires at least: 3.0
 Tested up to: 3.3.1
 Stable tag: trunk
