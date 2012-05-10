@@ -83,15 +83,15 @@ function getTextNodesIn(node, includeWhitespaceNodes, fontSize)
     var textNodes = [], whitespace = /^\s*$/;
     function getTextNodes(node) 
     {
-    		    //alert(node.parentNode);
-
         if (node.nodeType == 3) 
-	{
+		{
 		    if (includeWhitespaceNodes || !whitespace.test(node.nodeValue)) 
 		    {
 		    parent_=node.parentNode;
 			  if(parent_.nodeName=="FONT" && parent_.getAttribute("my")=="my" )
-			  {if(((tag.indexOf('#'+parent_.parentNode.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.parentNode.tagName!="SCRIPT"))
+			  {
+				 
+				  if(((tag.indexOf('#'+parent_.parentNode.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.parentNode.tagName!="SCRIPT") && (parent_.parentNode.tagName!="OPTION") && (parent_.tagName!="STYLE"))
 				{
 					x=fontSize+"%";
 					parent_.style.fontSize=x;
@@ -100,7 +100,7 @@ function getTextNodesIn(node, includeWhitespaceNodes, fontSize)
 						  
 			  else
 			  {	
-				if(((tag.indexOf('#'+parent_.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.tagName!="SCRIPT"))
+				if(((tag.indexOf('#'+parent_.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.tagName!="SCRIPT") && (parent_.tagName!="OPTION") && (parent_.tagName!="STYLE"))
 				 {
 
 					var newnode=document.createElement('font');
