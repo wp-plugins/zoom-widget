@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Zoom ===
 Contributors: webdorado
 Donate link: http://web-dorado.com/products/zoom-widget-wordpress.html
 Tags:  Zoom, resize, font size, accessibility, widget, font, content
