@@ -6,7 +6,7 @@ Requires at least: 3.0
 Tested up to: 3.4
 Stable tag: trunk
 
-[Zoom](http://web-dorado.com/products/zoom-widget-wordpress.html) enables site users to resize the predefined areas of the web site.
+Zoom enables site users to resize the predefined areas of the web site.
 == Description ==
 
 ####[Zoom](http://web-dorado.com/products/zoom-widget-wordpress.html)
