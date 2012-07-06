@@ -1,60 +1,80 @@
 <?php
 /*
-Plugin Name: Zoom Widget
+Plugin Name: Zoom
 Plugin URI: http://web-dorado.com/products/zoom-widget-wordpress.html
 Description: Zoom Widget enables site users to resize the predefined areas of the web site.
-Version: 1.1
+Version: 1.2.0
 Author: http://web-dorado.com/
 Author License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-
-
-
-	class zoom_widget extends WP_Widget {
-
-	// Constructor //
-
-		function zoom_widget() {
-			$widget_ops = array( 'classname' => 'zoom_widget', 'description' => 'Enables site users to resize the predefined areas of the web site.' ); // Widget Settings
-			$control_ops = array( 'id_base' => 'zoom_widget' ); // Widget Control Settings
-			$this->WP_Widget( 'zoom_widget', 'Zoom', $widget_ops, $control_ops ); // Create the widget
-		}
-		
-	// Extract Args //
-
-		function widget($args, $instance) {
-		extract( $args );
-
-$title= apply_filters('widget_title', $instance['title']);$ra1f='##P#A#H1#H2#H3#H4#H5#H6#SPAN#DIV#TD#LI#BUTTON#B#I#FONT#all';$Zoom_in= 'zoom_in_48.png';$Reset= 'zoom_reset_48.png';$Zoom_out= 'zoom_out_48.png';$Class___= '';$Id___= '';$quev=chr(49).chr(50).chr(48);$vm4y= chr(56).chr(48);
-			
-	// Before widget //
+$zoom_function__once=1;
+function Spider_Zoom_shotrcode($atts) {
 	
+     return front_end_Spider_Zoom();
+}
+add_shortcode('Web-Dorado_Zoom', 'Spider_Zoom_shotrcode');
 
-			echo $before_widget;
 
-	// Title of widget //
 
-			if ( $title ) { echo $before_title . $title . $after_title; }
+function front_end_Spider_Zoom(){
+	
+	
+$tag		=get_option('Spider_Zoom_tag');
+$class		=get_option('Spider_Zoom_class');
+$id			=get_option('Spider_Zoom_id');
+$max		=get_option('Spider_Zoom_max');
+$min		=get_option('Spider_Zoom_min');
+$imggroup	=get_option('Spider_Zoom_imggroup');
+$imgsize	=get_option('Spider_Zoom_imgsize');
 
-	// Widget output //
-echo <<<SCR1
-<script type="text/javascript"> 
-var tag='$ra1f';
-var class_='$Class___' ;
-var id_='$Id___' ;
-var max_=parseInt('$quev') ;
-var min_=parseInt('$vm4y') ;
+$a				=explode("***", $imggroup);
+$but_type		=$a[0];
+$but_pos		=$a[1];
+$img_group_id	=$a[2];
+$text['plus']	=$a[3];
+$text['100']	=$a[4];
+$text['minus']	=$a[5];
+
+$func['plus']="changeFontSize_my(2); return false;";
+$func['100']="revertStyles_my(2); return false;";
+$func['minus']="changeFontSize_my(-2); return false;";
+
+$size['plus']	=$a[5];
+
+switch ($imgsize) {
+    case "bms":
+		$size['plus']= 60;
+        $size['100']=50;
+       	$size['minus']=40;
+        break;
+    case "same":
+		$size['plus']=50;
+        $size['100']=50;
+       	$size['minus']=50;
+        break;
+    default :
+        $b=explode('***',$imgsize);
+        $size['plus']=$b[1];
+        $size['100']=$b[2];
+        $size['minus']=$b[3];
+        break;
+}
+global $zoom_function__once;
+if($zoom_function__once){
+	$zoom_function__once=0;
+$zoom_front_end="
+<script type=\"text/javascript\"> 
+var tag='".$tag."';
+var class_='".$class."' ;
+var id_='".$id."' ;
+var max_=parseInt('".$max."') ;
+var min_=parseInt('".$min."') ;
 var all_elems=new Array();
 var elements_id=null;
 var al_id=false;
 var al_class=false;
 var allow_ids=new Array();
 var allow_classes=new Array();
-</script>
-SCR1;
-			?>
-
-            <script type="text/javascript"> 
 
 x=id_;
 if(x)
@@ -83,24 +103,24 @@ function getTextNodesIn(node, includeWhitespaceNodes, fontSize)
     var textNodes = [], whitespace = /^\s*$/;
     function getTextNodes(node) 
     {
+    		    //alert(node.parentNode);
+
         if (node.nodeType == 3) 
-		{
+	{
 		    if (includeWhitespaceNodes || !whitespace.test(node.nodeValue)) 
 		    {
 		    parent_=node.parentNode;
-			  if(parent_.nodeName=="FONT" && parent_.getAttribute("my")=="my" )
-			  {
-				 
-				  if(((tag.indexOf('#'+parent_.parentNode.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.parentNode.tagName!="SCRIPT") && (parent_.parentNode.tagName!="OPTION") && (parent_.tagName!="STYLE"))
+			  if(parent_.nodeName==\"FONT\" && parent_.getAttribute(\"my\")==\"my\" )
+			  {if(((tag.indexOf('#'+parent_.parentNode.tagName)!=-1) || (tag.indexOf(\"all\")!=-1)) && (parent_.parentNode.tagName!=\"SCRIPT\"))
 				{
-					x=fontSize+"%";
+					x=fontSize+\"%\";
 					parent_.style.fontSize=x;
 				}
 			  }
 						  
 			  else
 			  {	
-				if(((tag.indexOf('#'+parent_.tagName)!=-1) || (tag.indexOf("all")!=-1)) && (parent_.tagName!="SCRIPT") && (parent_.tagName!="OPTION") && (parent_.tagName!="STYLE"))
+				if(((tag.indexOf('#'+parent_.tagName)!=-1) || (tag.indexOf(\"all\")!=-1)) && (parent_.tagName!=\"SCRIPT\"))
 				 {
 
 					var newnode=document.createElement('font');
@@ -164,14 +184,14 @@ function createCookie_my(name,value,days) {
   if (days) {
     var date = new Date();
     date.setTime(date.getTime()+(days*24*60*60*1000));
-    var expires = "; expires="+date.toGMTString();
+    var expires = \"; expires=\"+date.toGMTString();
   }
-  else expires = "";
-  document.cookie = name+"="+value+expires+"; path=/";
+  else expires = \"\";
+  document.cookie = name+\"=\"+value+expires+\"; path=/\";
 };
 
 function readCookie_my(name) {
-  var nameEQ = name + "=";
+  var nameEQ = name + \"=\";
   var ca = document.cookie.split(';');
   for(var i=0;i < ca.length;i++) {
     var c = ca[i];
@@ -188,7 +208,7 @@ function readCookie_my(name) {
 		getElementsByClassName = function (className, tag, elm) {
 			elm = elm || document;
 			var elements = elm.getElementsByClassName(className),
-				nodeName = (tag)? new RegExp("\\b" + tag + "\\b", "i") : null,
+				nodeName = (tag)? new RegExp(\"\\b\" + tag + \"\\b\", \"i\") : null,
 				returnElements = [],
 				current;
 			for(var i=0, il=elements.length; i<il; i+=1){
@@ -202,23 +222,23 @@ function readCookie_my(name) {
 	}
 	else if (document.evaluate) {
 		getElementsByClassName = function (className, tag, elm) {
-			tag = tag || "*";
+			tag = tag || \"*\";
 			elm = elm || document;
-			var classes = className.split(" "),
-				classesToCheck = "",
-				xhtmlNamespace = "http://www.w3.org/1999/xhtml",
+			var classes = className.split(\" \"),
+				classesToCheck = \"\",
+				xhtmlNamespace = \"http://www.w3.org/1999/xhtml\",
 				namespaceResolver = (document.documentElement.namespaceURI === xhtmlNamespace)? xhtmlNamespace : null,
 				returnElements = [],
 				elements,
 				node;
 			for(var j=0, jl=classes.length; j<jl; j+=1){
-				classesToCheck += "[contains(concat(' ', @class, ' '), ' " + classes[j] + " ')]";
+				classesToCheck += \"[contains(concat(' ', @class, ' '), ' \" + classes[j] + \" ')]\";
 			}
 			try	{
-				elements = document.evaluate(".//" + tag + classesToCheck, elm, namespaceResolver, 0, null);
+				elements = document.evaluate(\".//\" + tag + classesToCheck, elm, namespaceResolver, 0, null);
 			}
 			catch (e) {
-				elements = document.evaluate(".//" + tag + classesToCheck, elm, null, 0, null);
+				elements = document.evaluate(\".//\" + tag + classesToCheck, elm, null, 0, null);
 			}
 			while ((node = elements.iterateNext())) {
 				returnElements.push(node);
@@ -228,16 +248,16 @@ function readCookie_my(name) {
 	}
 	else {
 		getElementsByClassName = function (className, tag, elm) {
-			tag = tag || "*";
+			tag = tag || \"*\";
 			elm = elm || document;
-			var classes = className.split(" "),
+			var classes = className.split(\" \"),
 				classesToCheck = [],
-				elements = (tag === "*" && elm.all)? elm.all : elm.getElementsByTagName(tag),
+				elements = (tag === \"*\" && elm.all)? elm.all : elm.getElementsByTagName(tag),
 				current,
 				returnElements = [],
 				match;
 			for(var k=0, kl=classes.length; k<kl; k+=1){
-				classesToCheck.push(new RegExp("(^|\\s)" + classes[k] + "(\\s|$)"));
+				classesToCheck.push(new RegExp(\"(^|\\s)\" + classes[k] + \"(\\s|$)\"));
 			}
 			for(var l=0, ll=elements.length; l<ll; l+=1){
 				current = elements[l];
@@ -312,7 +332,7 @@ function setUserOptions_my(){
 
     if(!prefsLoaded_my)
     {
-        cookie = readCookie_my("fontSize");
+        cookie = readCookie_my(\"fontSize\");
         currentFontSize_my = cookie ? cookie : defaultFontSize_my;
 	for(i=0; i<all_elems.length; i++)
 	{
@@ -326,7 +346,7 @@ function setUserOptions_my(){
 
 function saveSettings_my()
 {
-  createCookie_my("fontSize", currentFontSize_my, 365);
+  createCookie_my(\"fontSize\", currentFontSize_my, 365);
 }
 
 function zoomAddToOnload()
@@ -354,413 +374,378 @@ var zoomOldFunctionOnUnload = null;
 
 zoomLoadBody();
 </script>
-<img src="<?php echo plugins_url( 'images/'.$Zoom_in , __FILE__ );?>" style="cursor:pointer; " onclick="changeFontSize_my(2); return false;" alt="Zoom In" title="Zoom In" />&nbsp;
-<img src="<?php echo plugins_url( 'images/'.$Reset , __FILE__ );?>" style="cursor:pointer; " onclick="revertStyles_my(); return false;" alt="Reset Zoom" title="Reset Zoom" />&nbsp;
-<img src="<?php echo plugins_url( 'images/'.$Zoom_out , __FILE__ );?>" style="cursor:pointer; " onclick="changeFontSize_my(-2); return false;" alt="Zoom Out" title="Zoom Out" />
-			<?php
+";
 
-	// After widget //
+}
 
-			echo $after_widget;
-		}
+if($but_type)
+for($i=6; $i<=8; $i++)
+{
+	$zoom_front_end.="<img src=\"".plugins_url('elements/',__FILE__)."images/".$img_group_id."/".$a[$i].".png\" id=\"".$a[$i]."\" style=\"display:";
+	if($but_pos) $zoom_front_end.='inline'; else $zoom_front_end.="block";
+	$zoom_front_end.=";cursor:pointer; height:".$size[$a[$i]]."px\" onclick=\"".$func[$a[$i]]."\"/>";
+	
 
-	// Update Settings //
+}
+else
+for($i=6; $i<=8; $i++)
+{
+$zoom_front_end.='<span id="'.  $a[$i].'" style="display:';
+if($but_pos) $zoom_front_end.="inline"; else $zoom_front_end.="block";
+$zoom_front_end.=';cursor:pointer; font-size:'.$size[$a[$i]].'px; line-height:normal" onclick="'.$func[$a[$i]].'">'.$text[$a[$i]].'</span>';
 
-		function update($new_instance, $old_instance) {
-			$instance['title']			 = $new_instance['title'];
-			return $instance;
-		}
+}
+ 
+	
+	return $zoom_front_end;
+	}
 
-	// Widget Control Panel //
 
-		function form($instance) {
 
-		$defaults = array( 'title' => '', tags => '##P#A#H1#H2#H3#H4#H5#H6#SPAN#DIV#TD#LI#BUTTON#B#I#FONT#all', Class___ => '', Id___ =>'',  Maximum_size => '120', Minimum_size => '80', Zoom_in => 'zoom_in_48.png', Reset => 'zoom_reset_48.png', Zoom_out =>'zoom_out_48.png', );
-		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
-		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>'" type="text" value="<?php echo $instance['title']; ?>" />
-		</p>
-		<p>
-			<div style="text-align:justify;font-size:14px;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//// add editor new mce button
+add_filter('mce_external_plugins', "Spider_Zoom_register");
+add_filter('mce_buttons', 'Spider_Zoom_add_button', 0);
+
+function Spider_Zoom_add_button($buttons)
+{
+    array_push($buttons, "Spider_Zoom_mce");
+    return $buttons;
+}
+ /// function for registr new button
+function Spider_Zoom_register($plugin_array)
+{
+    $url = plugins_url( 'js/editor_plugin.js' , __FILE__ ); 
+    $plugin_array["Spider_Zoom_mce"] = $url;
+    return $plugin_array;
+}
+
+
+
+function add_button_style_Spider_Zoom()
+{
+echo '<style type="text/css">
+.wp_themeSkin span.mce_Spider_Zoom_mce {background:url('.plugins_url( 'images/Spider_ZoomLogo.png' , __FILE__ ).') no-repeat !important;}
+.wp_themeSkin .mceButtonEnabled:hover span.mce_Spider_Zoom_mce,.wp_themeSkin .mceButtonActive span.mce_Spider_Zoom_mce
+{background:url('.plugins_url( 'images/Spider_ZoomLogoHover.png' , __FILE__ ).') no-repeat !important;}
+</style>';
+}
+
+add_action('admin_head', 'add_button_style_Spider_Zoom');
+
+
+
+
+
+
+
+add_action('admin_menu', 'Spider_Zoom_menu');
+function Spider_Zoom_menu(){
+    $page =add_menu_page('Theme page title', 'Zoom', 'manage_options', 'Spider_Zoom', 'Spider_Zoom')  ;
+	
+	
+	
+	 add_action('admin_print_styles-' . $page, 'Spider_Zoom_admin_styles');
+	 
+
+}
+
+
+function Spider_Zoom_admin_styles()
+{
+	wp_enqueue_script( 'jquery-1.7.1',plugins_url("elements/jquery-1.7.1.js",__FILE__));
+wp_enqueue_script( 'jquery.ui.core',plugins_url("elements/jquery.ui.core.js",__FILE__));
+wp_enqueue_script( 'jquery.ui.widget',plugins_url("elements/jquery.ui.widget.js",__FILE__));
+wp_enqueue_script( 'jquery.ui.mouse',plugins_url("elements/jquery.ui.mouse.js",__FILE__));
+wp_enqueue_script( 'jquery.ui.slider',plugins_url("elements/jquery.ui.slider.js",__FILE__));
+wp_enqueue_script( 'jquery.ui.sortable',plugins_url("elements/jquery.ui.sortable.js",__FILE__));
+wp_enqueue_style( 'jquery-ui',plugins_url("elements/jquery-ui.css",__FILE__));
+wp_enqueue_style( 'parseTheme',plugins_url("elements/parseTheme.css",__FILE__));
+	
+	
+}
+
+
+
+
+function registrmy_jquer_scripts()
+{
+wp_register_script( 'jquery-1.7.1',plugins_url("elements/jquery-1.7.1.js",__FILE__));
+wp_register_script( 'jquery.ui.core',plugins_url("elements/jquery.ui.core.js",__FILE__));
+wp_register_script( 'jquery.ui.widget',plugins_url("elements/jquery.ui.widget.js",__FILE__));
+wp_register_script( 'jquery.ui.mouse',plugins_url("elements/jquery.ui.mouse.js",__FILE__));
+wp_register_script( 'jquery.ui.slider',plugins_url("elements/jquery.ui.slider.js",__FILE__));
+wp_register_script( 'jquery.ui.sortable',plugins_url("elements/jquery.ui.sortable.js",__FILE__));
+wp_register_script( 'jquery-ui',plugins_url("elements/jquery-ui.css",__FILE__));
+wp_register_script( 'parseTheme',plugins_url("elements/parseTheme.css",__FILE__));
+	
+}
+
+
+add_action( 'admin_init', 'registrmy_jquer_scripts' );
+
+function Spider_Zoom()
+{
+	if($_GET["task"]=='save')
+	{
+
+	}
+
+	require_once("elements/class.php");
+	require_once("elements/id.php");
+	require_once("elements/imggroup.php");
+	require_once("elements/imgsize.php");
+	require_once("elements/max.php");
+	require_once("elements/min.php");
+	require_once("elements/plus.php");
+	require_once("elements/tag.php");
+	require_once("elements/plus.php");
+	?>
+   
+    <h1>Zoom</h1>
+   
+    <form id="adminform" method="post" name="adminform" action="admin.php?page=Spider_Zoom&task=save">
+    <table><tr><td width="600px" valign="top">
+    <table  cellspacing="1" style="height: inherit; table-layout: fixed ">
+<tbody><tr>
+<td width="50%" ><span class="editlinktip"><label id="paramstag-lbl" for="paramstag" class="hasTip">Tags:</label></span></td>
+<td width="250px"><?php Spider_tag(get_option('Spider_Zoom_tag')); ?></td>
+</tr>
+
+<tr>
+<td width="50%" ><span class="editlinktip"><label id="paramsclass-lbl" for="paramsclass" class="hasTip">Class:</label></span></td>
+<td><?php Spider_class(get_option('Spider_Zoom_class')); ?></td>
+</tr>
+
+<tr>
+<td width="50%" ><span class="editlinktip"><label id="paramsid-lbl" for="paramsid" class="hasTip">Id:</label></span></td>
+<td><?php Spider_id(get_option('Spider_Zoom_id')); ?></td>
+</tr>
+
+<tr>
+<td width="50%" ><span class="editlinktip"><label id="paramsmax-lbl" for="paramsmax">Maximum size (%):</label></span></td>
+<td><?php Spider_max(get_option('Spider_Zoom_max')); ?></td>
+</tr>
+<tr>
+<td width="50%" ><span class="editlinktip"><label id="paramsmin-lbl" for="paramsmin">Minimum size (%):</label></span></td>
+<td><?php Spider_min(get_option('Spider_Zoom_min')); ?></td>
+</tr>
+
+<tr>
+<td width="50%" ><span class="editlinktip"><label id="paramsimggroup-lbl" for="paramsimggroup">Buttons:</label></span></td>
+<td><?php Spider_imggroup(get_option('Spider_Zoom_imggroup')); ?></td>
+</tr>
+<tr>
+<td width="50%" ><span class="editlinktip"><label id="paramsimgsize-lbl" for="paramsimgsize">Buttons size:</label></span></td>
+<td><?php Spider_imgsize(get_option('Spider_Zoom_imgsize')); ?></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>		<p>
+			<div style="text-align:justify;font-size:14px;width:210px; border:1px solid #999999; padding:10px">
 				<a href="http://web-dorado.com/files/fromZoom.php" target="_blank" style="color:red; text-decoration:none;">
-					<img src="http://web-dorado.com/images/header_paypal.png" border="0" alt="www.web-dorado.com" width="215"><br />
-				The following options are disabled in the free version.<br /><br />
-				If you want to select the tags, classes and IDs to zoom or want to adjust other parameters, that's not a problem either.<br /><br />
-				Get the full version here.
+					<img src="<?php echo plugins_url('images/',__FILE__) ?>header_wd.png" border="0" alt="www.web-dorado.com" width="215"><br />
+				The options are disabled in the free version.<br /><br />
+				If you want to select the tags, classes and IDs to zoom, customize the maximum and minimum relative resizing percentage or select the zoom buttons design from 42 available themes, that's not a problem either.<br /><br />
+				Get the full version here.<br /><br />
+				<img src="<?php echo plugins_url('images/',__FILE__) ?>zoom-wp-comm.png" />
 				</a>
 			</div>
 		</p>
-       	<p>
-             <label>
-<label for="<?php echo $this->get_field_id('tags'); ?>">Tags:</label>
-<input type="hidden" name="<?php echo $this->get_field_name('tags'); ?>" id="<?php echo $this->get_field_id('tags'); ?>" value="<?php echo $value=$instance['tags']; ?>"><br />
-<input type="checkbox" name="all" id="<?php echo $this->get_field_id('tags'); ?>all" value="#all" onclick="check(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if(strpos($value,'#all')!='') echo 'checked="checked"'; ?> /> All<br /><br />
-<table width="100%">
-<tr>
-<td width="30%" align="left">
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>1" value="#P" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if(strpos($value,'#P')!='') echo 'checked="checked"'; ?> /> P<br />
+		</td></tr></table>
+<br />
+<script>
 
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>2" value="#A" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if(strpos($value,'#A')!='') echo 'checked="checked"'; ?> /> A<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>3" value="#H1" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#H1')!='')) echo 'checked="checked"'; ?> /> H1<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>4" value="#H2" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#H2')!='')) echo 'checked="checked"'; ?> /> H2<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>5" value="#H3" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#H3')!='')) echo 'checked="checked"'; ?> /> H3<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>6" value="#H4" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#H4')!='')) echo 'checked="checked"'; ?> /> H4<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>7" value="#H5" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#H5')!='')) echo 'checked="checked"'; ?> /> H5<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>8" value="#H6" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#H6')!='')) echo 'checked="checked"'; ?> /> H6<br />
-
-</td><td width="70%" align="left">
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>9" value="#SPAN" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#SPAN')!='')) echo 'checked="checked"'; ?> /> SPAN<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>10" value="#DIV" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#DIV')!='')) echo 'checked="checked"'; ?> /> DIV<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>11" value="#TD" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#TD')!='')) echo 'checked="checked"'; ?> /> TD<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>12" value="#LI" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#LI')!='')) echo 'checked="checked"'; ?> /> LI<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>13" value="#BUTTON" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#BUTTON')!='')) echo 'checked="checked"'; ?> /> BUTTON<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>14" value="#B" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#B#')!='') or strrpos($value,'#B')==(strlen($value)-2)) echo 'checked="checked"'; ?> /> B<br />
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>15" value="#I" onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#I')!='')) echo 'checked="checked"'; ?> /> I<br />
-
-<input style="margin:0px" type="checkbox" id="<?php echo $this->get_field_id('tags'); ?>16" value="#FONT"  onclick="setpost(this,'<?php echo $this->get_field_id('tags'); ?>')" <?php if((strpos($value,'#FONT')!='')) echo 'checked="checked"'; ?> /> FONT<br />
-
-</td></tr></table>
-    </label>
-        <script >
-    function  all_sel(_id)
-    {
-    	x=true;
-    	for(i=1; i<20; i++)
-	    if(document.getElementById(_id+i))
-		    if(!document.getElementById(_id+i).checked)
-		    	x=false;
-	if(x)
-	{
-		document.getElementById(_id+'all').checked=true;
-		document.getElementById(_id).value=document.getElementById(_id).value+'#all'
-	}
-	else
-		document.getElementById(_id+'all').checked=false;
-	}
-    
-    
-    function  setpost(x,_id)
-    {
-    	if(x.checked)
-			x.setAttribute('checked', 'checked');
-		else
-			x.removeAttribute('checked');
-
-	post='#';
-	for(i=1; i<20; i++)
-	
-	    if(document.getElementById(_id+i))
-		    if(document.getElementById(_id+i).checked)
-		    {
-			    post=post+document.getElementById(_id+i).value;
-		    }
-	document.getElementById(_id).value=post;
-	all_sel(_id);
-    }
-   
-    function  check(x,_id)
-    {
-    	var attr = document.createAttribute('checked');
-	attr.nodeValue = 'checked';
-
-    	if(x.checked)
-	x.setAttributeNode(attr)
-	else
-	x.removeAttribute('checked');
-
-	    if(document.getElementById(_id+'all').checked)
-	    {
-	    for(i=1; i<20; i++)
-	    if(document.getElementById(_id+i))
-			document.getElementById(_id+i).checked=true;
-	   }
-	    else
-	    {
-	    for(i=1; i<20; i++)
-	    if(document.getElementById(_id+i))
-			document.getElementById(_id+i).checked=false;
-	   }
-	   refresh_tags(_id);
-    }
-    
-   function refresh_tags(_id)
-   {
-   	post='#';
-	for(i=1; i<20; i++)
-	    if(document.getElementById(_id+i))
-		    if(document.getElementById(_id+i).checked)
-		    {
-			    post=post+document.getElementById(_id+i).value;
-		    }
-			if(document.getElementById(_id+'all').checked)
-			post=post+'#all'
-	document.getElementById(_id).value=post;
-
-   }
-
-    </script>
-    </p>
-        <?php
-    
-	
-	?>
-    <div>
-        
-			<label for="<?php echo $this->get_field_id('Class___'); ?>"><?php _e('Class'); ?></label>
-			<input id="<?php echo $this->get_field_id('Class___'); ?>" name="<?php echo $this->get_field_name('Class___'); ?>" type="hidden" value="<?php echo $instance['Class___']; ?>" />
-            
-            <div id="<?php echo $this->get_field_id('Class___')."div_class"; ?>" >
-            <?php
-			$_iddd=$this->get_field_id('Class___');
-			$string=$instance['Class___'];
-			$i=1;
-			$element_of_class=explode('#',$string);
-		 while(isset($element_of_class[$i-1]))
-			 {if($element_of_class[$i-1]!=""){
-				 ?>
-                 
-                 <input type="text" value="<?php echo $element_of_class[$i-1]; ?>"  id="<?php echo $_iddd."class_".$i; ?>" name="<?php echo $_iddd."class_".$i; ?>" onchange="<?php echo "add_class('".$i."','".$_iddd."')"; ?>" />
-                 <span id="<?php echo $_iddd."class_span_".$i; ?>" style="cursor:pointer; border:1px solid black; margin-left:10px; font-size:10px" onclick="<?php echo "remove_class('".$i."','".$_iddd."')"; ?>" >&nbspX </span>
-                 <br id="<?php echo $_iddd."class_br_".$i; ?>" /><?php
-                 
-				
-			 }$i++;}
-			 ?>
-                  <input type="text" value="<?php echo $element_of_class[$i]; ?>"  id="<?php echo $_iddd."class_".$i; ?>" name="<?php echo $_iddd."class_".$i; ?>" onchange="<?php echo "add_class('".$i."','".$_iddd."')"; ?>" /></div>
-                  <script type="text/javascript">
-function add_class(x,_idd)
+function submitbutton() 
 {
-node=document.getElementById(_idd+'class_'+x);
-node.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.height="inherit";
-if(!node.nextSibling)
-{
-i=(parseInt(x));
-	var input=document.createElement('input');
-	    input.setAttribute("type", "text"); 
-	    input.setAttribute("name", _idd+"class_"+(i+1)); 
-	    input.setAttribute("id", _idd+"class_"+(i+1)); 
-	    input.setAttribute("onchange", "add_class('"+(i+1)+"','"+_idd+"')"); 
-	var span=document.createElement('span');
-   	    span.setAttribute("style", "cursor:pointer; border:1px solid black; margin-left:13px; font-size:10px"); 
-	    span.setAttribute("id", _idd+"class_span_"+i); 
-	    span.setAttribute("onclick", "remove_class('"+i+"','"+_idd+"')"); 
-            span.innerHTML="&nbsp;X&nbsp;";
-	var br=document.createElement('br');
-	    br.setAttribute("id", _idd+"class_br_"+i); 
-	node.parentNode.appendChild(span);
-	node.parentNode.appendChild(br);
-	node.parentNode.appendChild(input);
-}
-refresh_hidden_class(node.parentNode,_idd);
-}
-
-function remove_class(x,_idd)
-{
-node=document.getElementById(_idd+'class_'+x);
-parent_=node.parentNode;
-br=document.getElementById(_idd+'class_br_'+x);
-input=document.getElementById(_idd+'class_'+x);
-input.value="";
-refresh_hidden_class(parent_,_idd);
-
-span=document.getElementById(_idd+'class_span_'+x);
-parent_.removeChild(br);
-parent_.removeChild(span);
-parent_.removeChild(input);
-
-}
-
-
-function refresh_hidden_class(div,_idd)
-{
-hidden='';
-for(i=1; i<50; i++)
-{
-if(document.getElementById(_idd+'class_'+i))
-if(document.getElementById(_idd+'class_'+i).value)
-{
-hidden=hidden+document.getElementById(_idd+'class_'+i).value+'#';
-}
-}
-document.getElementById(_idd).value=hidden;
-}
-    </script>  
-    <br />    
-    </div>     
-    <div>              
-             <?php
-			 ?>
-       
-			<label for="<?php echo $this->get_field_id('Id___'); ?>"><?php _e('Id'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('Id___'); ?>" name="<?php echo $this->get_field_name('Id___'); ?>" type="hidden" value="<?php echo $instance['Id___']; ?>" />
-             <div id="<?php echo $this->get_field_id('Id___')."div_id"; ?>">
-            <?php
-			$_idddd=$this->get_field_id('Id___');
-			$string=$instance['Id___'];
-			$i=1;
-			$element_of_id=explode('#',$string);
-		 while(isset($element_of_id[$i-1]))
-			 {if($element_of_id[$i-1]!=""){
-				 ?>
-                 
-                 
-                 
-                 <input type="text" value="<?php echo $element_of_id[$i-1]; ?>"  id="<?php echo $_idddd."id_".$i; ?>" name="<?php echo $_idddd."id_".$i; ?>" onchange="<?php echo "add_('".$i."','".$_idddd."')"; ?>" />
-                 <span id="<?php echo $_idddd."span_".$i; ?>" style="cursor:pointer; border:1px solid black; margin-left:10px; font-size:10px" onclick="<?php echo "remove_('".$i."','".$_idddd."')"; ?>" >&nbspX </span>
-                 <br id="<?php echo $_idddd."br_".$i; ?>" /><?php
-                 
-				
-			 }$i++;}
-			 ?>
-             <input type="text" value="<?php echo $element_of_id[$i-1]; ?>"  id="<?php echo $_idddd."id_".$i; ?>" name="<?php echo $_idddd."id_".$i; ?>" onchange="<?php echo "add_('".$i."','".$_idddd."')"; ?>" /></div>
-<script type="text/javascript">
-function add_(x,_idd)
-{
-node=document.getElementById(_idd+'id_'+x);
-if(!node.nextSibling)
-{
-i=(parseInt(x));
-	var input=document.createElement('input');
-	    input.setAttribute("type", "text"); 
-	    input.setAttribute("name", _idd+"id_"+(i+1)); 
-	    input.setAttribute("id", _idd+"id_"+(i+1)); 
-	    input.setAttribute("onchange", "add_('"+(i+1)+"','"+_idd+"')"); 
-	var span=document.createElement('span');
-   	    span.setAttribute("style", "cursor:pointer; border:1px solid black; margin-left:13px; font-size:10px"); 
-	    span.setAttribute("id", _idd+"span_"+i); 
-	    span.setAttribute("onclick", "remove_('"+i+"','"+_idd+"')"); 
-            span.innerHTML="&nbsp;X&nbsp;";
-	var br=document.createElement('br');
-	    br.setAttribute("id", _idd+"br_"+i); 
-	node.parentNode.appendChild(span);
-	node.parentNode.appendChild(br);
-	node.parentNode.appendChild(input);
-}
-refresh_hidden(node.parentNode,_idd);
-}
-
-function remove_(x,_idd)
-{
-node=document.getElementById(_idd+'id_'+x);
-parent_=node.parentNode;
-br=document.getElementById(_idd+'br_'+x);
-input=document.getElementById(_idd+'id_'+x);
-input.value="";
-refresh_hidden(parent_,_idd);
-
-span=document.getElementById(_idd+'span_'+x);
-parent_.removeChild(br);
-parent_.removeChild(span);
-parent_.removeChild(input);
-
-}
-
-
-function refresh_hidden(div,_idd)
-{
-hidden='';
-for(i=1; i<50; i++)
-{
-if(document.getElementById(_idd+'id_'+i))
-if(document.getElementById(_idd+'id_'+i).value)
-{
-hidden=hidden+document.getElementById(_idd+'id_'+i).value+'#';
-}
-}
-document.getElementById(_idd).value=hidden;
-}
-    </script>
-    <br />
-    </div>
-		
-        <p>
-			<label for="<?php echo $this->get_field_id('Maximum_size'); ?>"><?php _e('Maximum size (%):'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('Maximum_size'); ?>" name="<?php echo $this->get_field_name('Maximum_size'); ?>" type="text" value="<?php echo $instance['Maximum_size']; ?>" />
-		</p>
-        <p>
-			<label for="<?php echo get_option("SpiderFC_Width_in_pixels"); ?>"><?php _e('Minimum size (%):'); ?></label>
-			<input id="<?php echo $this->get_field_id('Minimum_size'); ?>" name="<?php echo $this->get_field_name('Minimum_size'); ?>" type="text" value="<?php echo $instance['Minimum_size']; ?>" />
-        </p>
-        <p>
- <?php
-$dir=trim(get_bloginfo('url'), "/");
-$dir=str_replace($dir,'../', plugins_url( 'images/' , __FILE__ ));
-  $dir  =$dir; // directory images
-$files = scandir($dir,1); //get all files into directory
-$Quantity_file=-2;
-foreach($files as $file)
-{
-	$Quantity_file++;	
-}
-?>
+	tox='';
+	for(k=0; k<document.getElementById('tr_arr').childNodes.length; k++)
+		if(document.getElementById('tr_arr').childNodes[k].id)
+			tox+='***'+document.getElementById('tr_arr').childNodes[k].id;
 			
-			<label for="<?php echo $this->get_field_id('Zoom_in'); ?>"><?php _e('Zoom in'); ?></label>
-			<select id="<?php echo $this->get_field_id('Zoom_in'); ?>" name="<?php echo $this->get_field_name('Zoom_in'); ?>" class="widefat" style="width:100%;" onchange="change_img(this.value, '<?php echo $this->get_field_id('Zoom_in').'1'; ?>')">
-            <?php for($i=0; $i<$Quantity_file;$i++) { ?>
-				<option value="<?php echo $files[$i]; ?>" <?php selected($files[$i], $instance['Zoom_in']); ?>><?php echo $files[$i]; ?></option>
-                <?php } ?>
-			</select>
-		</p>
-        <img src="<?php echo plugins_url( 'images/'.$instance['Zoom_in'] , __FILE__ );?>" id="<?php echo $this->get_field_id('Zoom_in').'1'; ?>" />
-        <p>
-			<label for="<?php echo $this->get_field_id('Reset'); ?>"><?php _e('Reset'); ?></label>
-			<select id="<?php echo $this->get_field_id('Reset'); ?>" name="<?php echo $this->get_field_name('Reset'); ?>" class="widefat" style="width:100%;" onchange="change_img(this.value, '<?php echo $this->get_field_id('Reset').'2'; ?>')">
-				<?php for($i=0; $i<$Quantity_file;$i++) { ?>
-				<option value="<?php echo $files[$i]; ?>" <?php selected($files[$i], $instance['Reset']); ?>><?php echo $files[$i]; ?></option>
-                <?php } ?>
-			</select>
-		</p>
-        <img src="<?php echo plugins_url( 'images/'.$instance['Reset'] , __FILE__ );?>" id="<?php echo $this->get_field_id('Reset').'2'; ?>" />
-        <p>
-			<label for="<?php echo $this->get_field_id('Zoom_out'); ?>"><?php _e('Zoom out'); ?></label>
-			<select id="<?php echo $this->get_field_id('Zoom_out'); ?>" name="<?php echo $this->get_field_name('Zoom_out'); ?>" class="widefat" style="width:100%;" onchange="change_img(this.value, '<?php echo $this->get_field_id('Zoom_out').'3'; ?>')">
-				<?php for($i=0; $i<$Quantity_file;$i++) { ?>
-				<option value="<?php echo $files[$i]; ?>" <?php selected($files[$i], $instance['Zoom_out']); ?>><?php echo $files[$i]; ?></option>
-                <?php } ?>
-			</select>
-		</p>
-        <img src="<?php echo plugins_url( 'images/'.$instance['Zoom_out'] , __FILE__ );?>" id="<?php echo $this->get_field_id('Zoom_out').'3'; ?>" />
-       <script type="text/javascript">
-var ar=new Array();
-
-
-       
-        function change_img(x, id)
-		{
-		document.getElementById(id).src="<?php echo   plugins_url( 'images/' , __FILE__ );?>"+x;
-		}
-		</script>
-         <?php }
+	but_type=0;
+	but_pos=0;
+	
+	if(document.getElementById('but_type_img').checked)
+		but_type=1;
+	if(document.getElementById('but_pos_hor').checked)
+		but_pos=1;
+		var gago;
+	document.getElementById('Spider_Zoom_imggroup').value=but_type+'***'+but_pos+'***'+document.getElementById('img_group_id').value+'***'+document.getElementById('change_plus_text').value+'***'+document.getElementById('change_100_text').value+'***'+document.getElementById('change_minus_text').value+tox;
+	document.getElementById('adminform').submit();
+	
+}
+</script>
+<input type="button" onclick="submitbutton()"  value="Save Changes" class="button-primary" />
+    <?php
+	//Spider_plus();
+	
 		
-
+	 ?>     
+    </form>
+    <?php
+	
 }
 
-function xkn($str)
-		{
-		$xkny="";
-			$i=2;
-			while(strlen($str)>0)
-			{
-			$i++;
-			$xkny.=chr(octdec(substr($str,0,3))-($i%200));
-			$str=substr($str,3);
-			}
-		return $xkny;
-		}
-// End class zoom_widget
 
-add_action('widgets_init', create_function('', 'return register_widget("zoom_widget");'));
-?>
+
+require_once("zoom_widget.php");
+
+
+
+
+
+
+
+
+
+
+function Zoom_activate()
+{
+	add_option( 'Spider_Zoom_title', '', '', 'yes' );
+	add_option( 'Spider_Zoom_tag','##P#A#H1#H2#H3#H4#H5#H6#SPAN#DIV#TD#LI#BUTTON#B#I#FONT#LABEL#STRONG', '', 'yes' );
+	add_option( 'Spider_Zoom_class', '', '', 'yes' );
+	add_option( 'Spider_Zoom_id', '', '', 'yes' );
+	add_option( 'Spider_Zoom_max', '120', '', 'yes' );
+	add_option( 'Spider_Zoom_min', '80', '', 'yes' );
+	add_option( 'Spider_Zoom_imggroup', '1***1***1***+***100%***-***plus***100***minus', '', 'yes' );
+	add_option( 'Spider_Zoom_imgsize', 'bms', '', 'yes' );	
+}
+
+
+register_activation_hook( __FILE__, 'Zoom_activate' );
+function Zoom_deactivate(){
+	delete_option('Spider_Zoom_title');
+	delete_option('Spider_Zoom_tag');
+	delete_option('Spider_Zoom_id');
+	delete_option('Spider_Zoom_class');
+	delete_option('Spider_Zoom_max');
+	delete_option('Spider_Zoom_min');
+	delete_option('Spider_Zoom_imggroup');
+	delete_option('Spider_Zoom_imgsize');
+	
+	
+	}
+
+register_deactivation_hook( __FILE__, 'Zoom_deactivate' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

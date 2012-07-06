@@ -3,7 +3,7 @@ Contributors: webdorado
 Donate link: http://web-dorado.com/products/zoom-widget-wordpress.html
 Tags:  Zoom, resize, font size, accessibility, widget, font, content
 Requires at least: 3.0
-Tested up to: 3.3.1
+Tested up to: 3.4
 Stable tag: trunk
 
 Zoom Widget is a small smart solution for improving your web site attractiveness
