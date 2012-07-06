@@ -15,7 +15,6 @@ Zoom enables site users to resize the predefined areas of the web site.
 
 [Demo](http://wpdemo.web-dorado.com/zoom/)  
 [Support Forum](http://web-dorado.com/forum/zoom.html)  
-[FAQ](http://web-dorado.com/forum/zoom.html)  
 
 
 [Zoom](http://web-dorado.com/products/zoom-widget-wordpress.html) is a small smart solution for improving your web site attractiveness. [Zoom](http://web-dorado.com/products/zoom-widget-wordpress.html) enables site users to resize the predefined areas of the web site.
@@ -33,7 +32,7 @@ After downloading the ZIP file
 
 Once the plugin is activated, you'll notice a menu on the left called "Zoom". Here you can change various parameters of Zoom.
 
-To show the Zoom Widget on the site, you can:
+To show the Zoom Widget on the site, you can:    
 - Add it to a sidebar (Zoom Widget will be available in Widgets under the menu item Appearance),    
 - Insert Zoom Widget into the text of a post or a page by clicking "Insert Zoom" button in the toolbar of WordPress editor,    
 - Insert Zoom Widget into the text of a post or a page by adding the shortcode [Web-Dorado_Zoom] where you want the form to appear.    
