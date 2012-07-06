@@ -34,9 +34,9 @@ After downloading the ZIP file
 Once the plugin is activated, you'll notice a menu on the left called "Zoom". Here you can change various parameters of Zoom.
 
 To show the Zoom Widget on the site, you can:
-- Add it to a sidebar (Zoom Widget will be available in Widgets under the menu item Appearance)
-- Insert Zoom Widget into the text of a post or a page by clicking "Insert Zoom" button in the toolbar of WordPress editor,
-- Insert Zoom Widget into the text of a post or a page by adding the shortcode [Web-Dorado_Zoom] where you want the form to appear.
+- Add it to a sidebar (Zoom Widget will be available in Widgets under the menu item Appearance),    
+- Insert Zoom Widget into the text of a post or a page by clicking "Insert Zoom" button in the toolbar of WordPress editor,    
+- Insert Zoom Widget into the text of a post or a page by adding the shortcode [Web-Dorado_Zoom] where you want the form to appear.    
 
 == Screenshots ==
 1.  Zoom Widget
