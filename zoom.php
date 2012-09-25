@@ -3,7 +3,7 @@
 Plugin Name: Zoom
 Plugin URI: http://web-dorado.com/products/zoom-widget-wordpress.html
 Description: Zoom Widget enables site users to resize the predefined areas of the web site.
-Version: 1.2.0
+Version: 1.2.1
 Author: http://web-dorado.com/
 Author License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -381,9 +381,10 @@ zoomLoadBody();
 if($but_type)
 for($i=6; $i<=8; $i++)
 {
-	$zoom_front_end.="<img src=\"".plugins_url('elements/',__FILE__)."images/".$img_group_id."/".$a[$i].".png\" id=\"".$a[$i]."\" style=\"display:";
+	 if($a[$i]=='plus') $xxxxx='+'; if($a[$i]=='minus') $xxxxx='-';  if($a[$i]=='100') $xxxxx='100%' ;
+	$zoom_front_end.="<img src=\"".plugins_url('elements/',__FILE__)."images/".$img_group_id."/".$a[$i].".png\" alt=\"".$xxxxx."\" id=\"".$a[$i]."\" style=\"display:";
 	if($but_pos) $zoom_front_end.='inline'; else $zoom_front_end.="block";
-	$zoom_front_end.=";cursor:pointer; height:".$size[$a[$i]]."px\" onclick=\"".$func[$a[$i]]."\"/>";
+	$zoom_front_end.=";cursor:pointer; height:".$size[$a[$i]]."px\"  onclick=\"".$func[$a[$i]]."\"/>";
 	
 
 }
