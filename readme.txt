@@ -11,13 +11,13 @@ Zoom enables site users to resize the predefined areas of the web site.
 
 ####[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html)
 
-Zoom is a small smart solution for improving your web site attractiveness. Zoom enables site users to resize the predefined areas of the web site.
+Zoom is a small smart solution for improving your web site attractiveness. WordPress Zoom plugin enables site users to resize the predefined areas of the web site.
 
 [Demo](http://wpdemo.web-dorado.com/zoom/)  
 [Support Forum](http://web-dorado.com/forum/zoom.html)  
 
 
-[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) is a small smart solution for improving your web site attractiveness. [WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) enables site users to resize the predefined areas of the web site.
+[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) is a small smart solution for improving your web site attractiveness. [WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) plugin enables site users to resize the predefined areas of the web site.
 
 == Installation ==
 
@@ -28,7 +28,7 @@ After downloading the ZIP file
 2.   Click 'Add New'  
 3.   Choose the 'Upload' option  
 4.   Upload the downloaded ZIP file.  
-5.   Once it is complete, activate the plugin.  
+5.   Once it is complete, activate the [WordPress Zoom](http://wordpress.org/extend/plugins/zoom-widget/).  
 
 Once the plugin is activated, you'll notice a menu on the left called "Zoom". Here you can change various parameters of [WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html).
 
