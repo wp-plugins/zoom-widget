@@ -3,7 +3,7 @@
 Plugin Name: Zoom
 Plugin URI: http://web-dorado.com/products/zoom-widget-wordpress.html
 Description: Zoom Widget enables site users to resize the predefined areas of the web site.
-Version: 1.2.1
+Version: 1.2.2
 Author: http://web-dorado.com/
 Author License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
