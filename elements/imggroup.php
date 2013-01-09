@@ -57,7 +57,7 @@ function submitbutton(pressbutton)
     <tr>
         <td><label style="color:#666"><strong>Type:</strong></label></td> 
         <td><input type="radio" value="1" name="but_type" onclick="change_type('img')" id="but_type_img" <?php if($but_type) echo 'checked="checked"'?> />Image</td>
-        <td><input type="radio" value="1" name="but_type"  onclick="change_type('text')" id="but_type_text" <?php if(!$but_type) echo 'checked="checked"'?> />Text</td>
+        <td><input type="radio" value="1" name="but_type"  onclick="change_type('text')" id="but_type_text" <?php if(!$but_type) echo 'checked="checked"'?> />Text (HTML)</td>
     </tr>
     <tr>
         <td><label style="color:#666"><strong>Position:</strong></label></td> 
