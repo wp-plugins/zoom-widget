@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Zoom
-Plugin URI: http://web-dorado.com/products/zoom-widget-wordpress.html
+Plugin URI: http://webdorado.org/products/zoom-widget-wordpress.html
 Description: Zoom Widget enables site users to resize the predefined areas of the web site.
-Version: 1.2.2
-Author: http://web-dorado.com/
+Version: 1.2.3
+Author: http://webdorado.org/
 Author License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
 $zoom_function__once=1;
@@ -585,8 +585,8 @@ function Spider_Zoom()
 </td>
 <td>		<p>
 			<div style="text-align:justify;font-size:14px;width:210px; border:1px solid #999999; padding:10px">
-				<a href="http://web-dorado.com/files/fromZoom.php" target="_blank" style="color:red; text-decoration:none;">
-					<img src="<?php echo plugins_url('images/',__FILE__) ?>header_wd.png" border="0" alt="www.web-dorado.com" width="215"><br />
+				<a href="http://webdorado.org/files/fromZoom.php" target="_blank" style="color:red; text-decoration:none;">
+					<img src="<?php echo plugins_url('images/',__FILE__) ?>header_wd.png" border="0" alt="www.webdorado.org" width="215"><br />
 				The options are disabled in the free version.<br /><br />
 				If you want to select the tags, classes and IDs to zoom, customize the maximum and minimum relative resizing percentage or select the zoom buttons design from 42 available themes, that's not a problem either.<br /><br />
 				Get the full version here.<br /><br />
