@@ -3,7 +3,7 @@ Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-zoom.html
 Tags:  Zoom, resize, font size, accessibility, widget, font, content
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.7.1
 Stable tag: trunk
 
 Zoom enables site users to resize the predefined areas of the web site.
