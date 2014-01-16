@@ -1,7 +1,7 @@
 === Zoom ===
 Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-zoom.html
-Tags: zoom ,accessibility, content, font, font size, resize, widget, size, fonts, font resize, increase font size, font size adjust, fontsize, font zoom 
+Tags: zoom ,accessibility, content, font, font size, resize, widget, size, fonts, increase font size, font size adjust, fontsize, font zoom 
 Requires at least: 3.0
 Tested up to: 3.7.1
 Stable tag: trunk
