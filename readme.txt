@@ -11,7 +11,7 @@ Zoom enables site users to resize the predefined areas of the web site.
 
 ####[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html)
 
-Zoom is a small smart solution for improving your web site attractiveness. WordPress Zoom plugin enables site users to resize the predefined areas of the web site.
+[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) is a small smart solution for improving your web site attractiveness. [WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) plugin enables site users to resize the predefined areas of the web site.
 
 The product is designed to enhance your website accessibility, giving a chance for every user to get equal high-level user experience.
 
@@ -19,7 +19,6 @@ The product is designed to enhance your website accessibility, giving a chance f
 [Support Forum](http://web-dorado.com/forum/zoom.html)  
 
 
-[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) is a small smart solution for improving your web site attractiveness. [WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) plugin enables site users to resize the predefined areas of the web site.
 
 == Installation ==
 
