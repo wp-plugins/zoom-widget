@@ -3,13 +3,12 @@ Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-zoom.html
 Tags: zoom ,accessibility, content, font, font size, resize, widget, size, fonts, increase font size, font size adjust, fontsize, font zoom 
 Requires at least: 3.0
-Tested up to: 3.8.1
+Tested up to: 4.0
 Stable tag: trunk
 
 Zoom enables site users to resize the predefined areas of the web site.
 == Description ==
-
-####[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html)
+[WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html)
 
 [WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) is a small smart solution for improving your web site attractiveness. [WordPress Zoom](http://web-dorado.com/products/wordpress-zoom.html) plugin enables site users to resize the predefined areas of the web site.
 
