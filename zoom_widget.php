@@ -388,7 +388,7 @@ if($but_type)
 for($i=6; $i<=8; $i++)
 {
 	?>
-<img src="<?php echo plugins_url('elements/',__FILE__); ?>images/<?php echo  $img_group_id; ?>/<?php echo  $a[$i]; ?>.png" id="<?php echo  $a[$i]; ?>" alt="<?php if($a[$i]=='plus') echo '+'; if($a[$i]=='minus') echo '-';  if($a[$i]=='100') echo '100%';?>" style="display:<?php if($but_pos) echo "inline"; else echo "block"; ?>;cursor:pointer; height:<?php echo  $size[$a[$i]]; ?>px" onclick="<?php echo  $func[$a[$i]]; ?> "/>
+<img src="<?php echo plugins_url('elements/',__FILE__); ?>images/<?php echo  $img_group_id; ?>/<?php echo  $a[$i]; ?>.png" id="<?php echo  $a[$i]; ?>" alt="<?php if($a[$i]=='plus') echo 'Zoom in'; if($a[$i]=='minus') echo 'Zoom out';  if($a[$i]=='100') echo 'Regular';?>" style="display:<?php if($but_pos) echo "inline"; else echo "block"; ?>;cursor:pointer; height:<?php echo  $size[$a[$i]]; ?>px" onclick="<?php echo  $func[$a[$i]]; ?> "/>
 	<?php
 
 }
