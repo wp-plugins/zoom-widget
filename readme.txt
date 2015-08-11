@@ -4,7 +4,7 @@ Donate link: http://web-dorado.com/products/wordpress-zoom.html
 Tags: zoom ,accessibility, content, font, font size, resize, widget, size, fonts, increase font size, font size adjust, fontsize, font zoom 
 Requires at least: 3.0
 Tested up to: 4.2
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 
 Zoom enables site users to resize the predefined areas of the web site.
 == Description ==

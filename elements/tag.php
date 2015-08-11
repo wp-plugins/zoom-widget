@@ -2,6 +2,7 @@
 
 function Spider_tag($value)
 {
+
 ?>
 <input type="hidden" name="Spider_Zoom_tag" id="Spider_Zoom_tag" value="<?php echo $value; ?>"><br />
 <input type="checkbox" name="all" id="all" value="#all" onclick="check(this)" <?php if(strpos($value,'#all')!='') echo 'checked="checked"'; ?> /> All<br /><br />
@@ -17,6 +18,7 @@ function Spider_tag($value)
 <input style="margin:0px" type="checkbox" id="6" value="#H4" onclick="setpost(this)" <?php if((strpos($value,'#H4')!='')) echo 'checked="checked"'; ?> /> H4<br />
 <input style="margin:0px" type="checkbox" id="7" value="#H5" onclick="setpost(this)" <?php if((strpos($value,'#H5')!='')) echo 'checked="checked"'; ?> /> H5<br />
 <input style="margin:0px" type="checkbox" id="8" value="#H6" onclick="setpost(this)" <?php if((strpos($value,'#H6')!='')) echo 'checked="checked"'; ?> /> H6<br />
+<input style="margin:0px" type="checkbox" id="19" value="#EM" onclick="setpost(this)" <?php if((strpos($value,'#EM')!='')) echo 'checked="checked"'; ?> /> EM<br />
 </td><td width="60%" align="left">
 <input style="margin:0px" type="checkbox" id="9" value="#SPAN" onclick="setpost(this)" <?php if((strpos($value,'#SPAN')!='')) echo 'checked="checked"'; ?> /> SPAN<br />
 <input style="margin:0px" type="checkbox" id="10" value="#DIV" onclick="setpost(this)" <?php if((strpos($value,'#DIV')!='')) echo 'checked="checked"'; ?> /> DIV<br />
@@ -34,7 +36,7 @@ function Spider_tag($value)
     function  all_sel()
     {
     	x=true;
-    	for(i=1; i<20; i++)
+    	for(i=1; i<21; i++)
 	    if(document.getElementById(i))
 		    if(!document.getElementById(i).checked)
 		    	x=false;
@@ -53,7 +55,7 @@ function Spider_tag($value)
 			x.removeAttribute('checked');
 
 	post='#';
-	for(i=1; i<20; i++)
+	for(i=1; i<21; i++)
 	    if(document.getElementById(i))
 		    if(document.getElementById(i).checked)
 		    {
@@ -75,13 +77,13 @@ function Spider_tag($value)
 
 	    if(document.getElementById('all').checked)
 	    {
-	    for(i=1; i<20; i++)
+	    for(i=1; i<21; i++)
 	    if(document.getElementById(i))
 			document.getElementById(i).checked=true;
 	   }
 	    else
 	    {
-	    for(i=1; i<20; i++)
+	    for(i=1; i<21; i++)
 	    if(document.getElementById(i))
 			document.getElementById(i).checked=false;
 	   }
@@ -91,7 +93,7 @@ function Spider_tag($value)
    function refresh_tags()
    {
    	post='#';
-	for(i=1; i<20; i++)
+	for(i=1; i<21; i++)
 	    if(document.getElementById(i))
 		    if(document.getElementById(i).checked)
 		    {
